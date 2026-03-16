@@ -3,97 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Increíble Página Web</title>
+    <title>Aprende Jugando | Mi Web Didáctica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
     <style>
-        /* Un toque de estilo para que se vea genial */
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --bg: #f0f3f7;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+        }
+
+        /* Estilos base */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
             margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f9;
+            transition: all 0.3s ease;
         }
-        header {
-            background: #2c3e50;
-            color: #ffffff;
-            padding: 2rem;
-            text-align: center;
-        }
+
+        /* Navegación con efecto Glassmorphism */
         nav {
+            background: rgba(108, 92, 231, 0.9);
+            padding: 1rem 5%;
             display: flex;
-            justify-content: center;
-            background: #34495e;
-            padding: 0.5rem;
-        }
-        nav a {
+            justify-content: space-between;
+            align-items: center;
             color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            margin: 0 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
         }
-        nav a:hover {
-            background: #1abc9c;
-            border-radius: 5px;
+
+        /* Hero Section (Bienvenida) */
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 0 0 50% 50% / 20px;
         }
+
+        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+
+        /* Contenedor de Tarjetas */
         .container {
-            width: 80%;
-            margin: 2rem auto;
-            overflow: hidden;
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-width: 1000px;
+            margin: -50px auto 50px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
+
+        /* Tarjeta Didáctica */
+        .card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(108, 92, 231, 0.2);
+        }
+
+        .card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Botón Interactivo */
+        .btn-magic {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 15px;
+        }
+
+        .btn-magic:hover {
+            background: #5649c0;
+        }
+
+        /* Footer */
         footer {
             text-align: center;
-            padding: 2rem;
-            background: #2c3e50;
+            padding: 3rem;
+            background: #2d3436;
             color: white;
-            margin-top: 2rem;
         }
-        .btn {
-            display: inline-block;
-            background: #1abc9c;
-            color: white;
-            padding: 0.7rem 1.5rem;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            cursor: pointer;
+
+        /* Clase para modo oscuro vía JS */
+        .dark-mode {
+            --bg: #1e272e;
+            --card-bg: #2f3640;
+            --text: #f5f6fa;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Bienvenido a Mi Proyecto</h1>
-        <p>Creado con la ayuda de Gemini</p>
-    </header>
-
     <nav>
-        <a href="#">Inicio</a>
-        <a href="#">Servicios</a>
-        <a href="#">Contacto</a>
+        <div style="font-weight: 600; font-size: 1.2rem;">EduMagic 🚀</div>
+        <button onclick="toggleDarkMode()" class="btn-magic" style="padding: 5px 15px; font-size: 0.8rem;">Cambiar Modo</button>
     </nav>
 
-    <div class="container">
-        <h2>¿Qué es esto?</h2>
-        <p>Esta es una estructura básica de HTML5. He incluido un poco de CSS interno para que los elementos estén organizados y sean visualmente agradables.</p>
-        
-        <h3>Características principales:</h3>
-        <ul>
-            <li><strong>Diseño Responsivo:</strong> Se adapta a diferentes pantallas.</li>
-            <li><strong>Limpio y Semántico:</strong> Usa etiquetas correctas como <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code> y <code>&lt;footer&gt;</code>.</li>
-            <li><strong>Fácil de editar:</strong> Puedes cambiar los colores en la sección de <code>&lt;style&gt;</code>.</li>
-        </ul>
+    <section class="hero">
+        <h1>¡Explora y Aprende!</h1>
+        <p>Una experiencia visual para mentes curiosas.</p>
+    </section>
 
-        <a href="#" class="btn">¡Haz clic aquí!</a>
-    </div>
+    <main class="container">
+        <div class="card" onclick="alert('¡Excelente! Estás explorando el Pensamiento Lógico.')">
+            <i class="material-icons">lightbulb</i>
+            <h3>Creatividad</h3>
+            <p>Aprende a resolver problemas con soluciones que nadie más ha imaginado.</p>
+            <button class="btn-magic">Saber más</button>
+        </div>
+
+        <div class="card" onclick="alert('El código es el lenguaje del futuro.')">
+            <i class="material-icons">code</i>
+            <h3>Programación</h3>
+            <p>Descubre cómo hablarle a las máquinas y crear tus propias aplicaciones.</p>
+            <button class="btn-magic">Empezar</button>
+        </div>
+
+        <div class="card" onclick="alert('¡El universo es enorme! Sigue investigando.')">
+            <i class="material-icons">rocket_launch</i>
+            <h3>Ciencia</h3>
+            <p>Explora las leyes del universo, desde los átomos hasta las galaxias.</p>
+            <button class="btn-magic">Despegar</button>
+        </div>
+    </main>
 
     <footer>
-        <p>&copy; 2026 - Mi Marca Personal</p>
+        <p>Hecho con ❤️ para aprender mejor</p>
+        <small>© 2026 Academia Digital Interactiva</small>
     </footer>
+
+    <script>
+        // Función para cambiar entre modo claro y oscuro
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
 
 </body>
 </html>
